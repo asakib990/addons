@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- Tree View -->
+        <record id="se_education_board_tree_view" model="ir.ui.view">
+            <field name="name">se.education.board.tree.view</field>
+            <field name="model">se.education.board</field>
+            <field name="arch" type="xml">
+                <tree string="Education Boards">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="academic_medium_type"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- Form View -->
+        <record id="se_education_board_form_view" model="ir.ui.view">
+            <field name="name">se.education.board.form.view</field>
+            <field name="model">se.education.board</field>
+            <field name="arch" type="xml">
+                <form string="Education Board Form">
+                    <sheet string="Education Board">
+                        <group>
+                            <field name="name"/>
+                            <field name="academic_medium_type" required="True"/>
+                            <field name="education_board_code"/>
+                            <field name="note"/>
+                        </group>
+                        <group string="Admission" col="8">
+                            <field name="is_allow_for_ssc"/>
+                            <field name="is_allow_for_hsc"/>
+                            <field name="is_allow_for_o_level"/>
+                            <field name="is_allow_for_a_level"/>
+                            <field name="is_allow_for_diploma"/>
+                            <field name="is_allow_for_bachelors"/>
+                            <field name="is_allow_for_masters"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Act Window & Menu Configuration -->
+        <record id="action_se_education_board_view" model="ir.actions.act_window">
+            <field name="name">Education Board</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">se.education.board</field>
+            <field name="domain">[]</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="se_education_board_tree_view"/>
+        </record>
+
+    </data>
+</odoo>
