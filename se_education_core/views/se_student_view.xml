@@ -11,23 +11,23 @@
             <field name="arch" type="xml">
                 <kanban class="o_res_partner_kanban">
                     <field name="id"/>
-                    <field name="image_1920"/>
+                    <field name="student_image"/>
                     <templates>
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_global_click o_kanban_record_has_image_fill">
-                                <div class="o_kanban_image d-none d-md-block"
-                                t-attf-style="background-image:url('#{kanban_image('se.student', 'image_1920', record.id.raw_value, placeholder)}')">
+                                <div class="o_kanban_image_fill_left o_kanban_image_full"
+                                     t-attf-style="background-image:url('#{kanban_image('se.student', 'student_image', record.id.raw_value, placeholder)}')">
                                 </div>
-<!--                                <div class="o_kanban_image">-->
-<!--                                    <t t-if="record.image_1920.value">-->
-<!--                                        <img t-att-src="kanban_image('se.student', 'image_1920', record.id.raw_value)"-->
-<!--                                             alt="Student"/>-->
-<!--                                    </t>-->
-<!--                                    <t t-if="!record.image_1920.value">-->
-<!--                                        <img t-att-src='_s + "odoo16/odoo16-server/odoo/addons/base/static/img/avatar.png"' alt="Student"/>-->
-<!--                                    </t>-->
-<!--                                </div>-->
-                                <div class="oe_kanban_details">
+                                <!--                                <div class="o_kanban_image">-->
+                                <!--                                    <t t-if="record.image_1920.value">-->
+                                <!--                                        <img t-att-src="kanban_image('se.student', 'image_1920', record.id.raw_value)"-->
+                                <!--                                             alt="Student"/>-->
+                                <!--                                    </t>-->
+                                <!--                                    <t t-if="!record.image_1920.value">-->
+                                <!--                                        <img t-att-src='_s + "odoo16/odoo16-server/odoo/addons/base/static/img/avatar.png"' alt="Student"/>-->
+                                <!--                                    </t>-->
+                                <!--                                </div>-->
+                                <div class="oe_kanban_details oe_left">
                                     <h4>
                                         <a type="open">
                                             <field name="name"/>
@@ -35,21 +35,26 @@
                                     </h4>
                                     <ul>
                                         <li t-if="record.contact_address.raw_value">
-                                            Address: <field name="contact_address"/>
+                                            Address:
+                                            <field name="contact_address"/>
                                         </li>
                                         <li t-if="record.phone.raw_value">
-                                            Phone: <field name="phone"/>
+                                            Phone:
+                                            <field name="phone"/>
                                         </li>
                                         <li t-if="record.mobile.raw_value">
-                                            Mobile: <field name="mobile"/>
+                                            Mobile:
+                                            <field name="mobile"/>
                                         </li>
                                         <li t-if="record.email.raw_value">
                                             <a t-attf-href="mailto:#{record.email.value}">
-                                                Email: <field name="email"/>
+                                                Email:
+                                                <field name="email"/>
                                             </a>
                                         </li>
                                         <li t-if="record.lang.raw_value">
-                                            Language: <field name="lang"/>
+                                            Language:
+                                            <field name="lang"/>
                                         </li>
                                     </ul>
                                 </div>
@@ -86,14 +91,14 @@
             <field name="model">se.student</field>
             <field name="arch" type="xml">
                 <form string="Student">
-                    <header>
-                        <button type="object"
-                                name="create_student_user"
-                                string="Create Student User"
-                                class="oe_highlight"
-                        />
-                        <!--attrs="{'invisible': [('user_id', '!=', False)]} will be added after doing relation in se_student.py"-->
-                    </header>
+<!--                    <header>-->
+<!--                        <button type="object"-->
+<!--                                name="create_student_user"-->
+<!--                                string="Create Student User"-->
+<!--                                class="oe_highlight"-->
+<!--                        />-->
+<!--                        &lt;!&ndash;attrs="{'invisible': [('user_id', '!=', False)]} will be added after doing relation in se_student.py"&ndash;&gt;-->
+<!--                    </header>-->
                     <sheet>
                         <field name="active" invisible="1"/>
                         <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
@@ -101,7 +106,7 @@
                         <div name="smart_button" class="oe_button_box">
 
                         </div>
-                        <field name="image_1920" widget="image" class="oe_right oe_avatar"/>
+                        <field name="student_image" widget="image" class="oe_right oe_avatar"/>
                         <div class="oe_title w-auto">
                             <h1>
                                 <field name="name" placeholder="Name" required="1" invisible="1"/>
@@ -127,7 +132,7 @@
                                     <group>
                                         <field name="gender" required="1"/>
                                         <field name="birth_date" required="1"/>
-<!--                                        <field name="nationality"/>-->
+                                        <!--                                        <field name="nationality"/>-->
                                         <field name="visa_info"/>
                                         <field name="lang"/>
                                         <field name="blood_group"/>
@@ -135,21 +140,38 @@
                                     <group>
                                         <field name="mobile" required="1"/>
                                         <!--Many2many relation with res.country-->
-<!--                                        <field name="emergency_contact" context="{'show_address': 1}"-->
-<!--                                        options='{"always_reload": True}'/>-->
+                                        <!--                                        <field name="emergency_contact" context="{'show_address': 1}"-->
+                                        <!--                                        options='{"always_reload": True}'/>-->
 
                                         <!--Relation is mandatory-->
                                         <field name="user_id" string="User" readonly="1"/>
                                         <field name="email" required="1"/>
-<!--                                        <field name="partner_id" placeholder="Partner" required="0"/>-->
+                                        <!--                                        <field name="partner_id" placeholder="Partner" required="0"/>-->
                                     </group>
-<!--                                    <field name="category_id"/>-->
+                                    <!--                                    <field name="category_id"/>-->
 
                                 </group>
-<!--                                <group string="Address Detail" name="address">-->
-<!--&lt;!&ndash;                                    <button name="contact_ids" string="Add Contact" type="object"/>&ndash;&gt;-->
-<!--                                </group>-->
+                                <group string="Address Detail" name="address">
+                                    <!--                                    <button name="contact_ids" string="Add Contact" type="object"/>-->
+                                    <field name="contact_ids" colspan="2" nolabel="1" readonly="1">
+                                            <!-- tree no open custom class  -->
+                                            <tree editable="bottom" class="tree_no_open">
+                                                <field name="type" required='1'/>
+                                                <field name="street" required='1'/>
+                                                <field name="street2" required='1'/>
+                                                <field name="city" required='1'/>
+                                                <field name="country" required='1'/>
+                                                <field name="state" required='1'/>
+                                                <field name="zip" readonly="1"/>
+                                            </tree>
+                                    </field>
+                                    <!--                                        <control>-->
+                                    <!--                                            <create name="add_contact" string="Add Contact"/>-->
+                                    <!--                                        </control>-->
+
+                                </group>
                             </page>
+
                             <page name="educational" string="Educational">
                                 <group>
                                     <group colspan="3">

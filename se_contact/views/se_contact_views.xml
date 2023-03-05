@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+
+<!--        tree view-->
+        <record id="se_contact_tree_view" model="ir.ui.view">
+            <field name="name">se_contact_view_tree</field>
+            <field name="model">se.core.contact</field>
+            <field name="arch" type="xml">
+                <tree string="se_contact_tree">
+                    <field name="name"/>
+                    <field name="email"/>
+                </tree>
+            </field>
+        </record>
+
+<!--        form view-->
+        <record id="se_contact_form_view" model="ir.ui.view">
+            <field name="name">se_contact_form_view</field>
+            <field name="model">se.core.contact</field>
+            <field name="arch" type="xml">
+                <form string="se_contact_form">
+                    <sheet>
+                        <field name="student_image" widget="image" class="oe_right oe_avatar"/>
+                        <div class="w-auto">
+                            <group>
+                                <field name="name"/>
+                                <field name="email"/>
+                            </group>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="se_contact_action_view" model="ir.actions.act_window">
+            <field name="name">se_contact_action_view</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">se.core.contact</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="se_contact_tree_view"/>
+        </record>
+    </data>
+</odoo>

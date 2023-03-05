@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_se_student,se_student,model_se_student,base.group_user,1,1,1,1
+access_se_contact,se_contact,model_se_contact,base.group_user,1,1,1,1

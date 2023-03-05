@@ -1,0 +1,6 @@
+<odoo>
+    <data>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="se_contact_root" name="Se Contact" action="se_contact_action_view"/>
+    </data>
+</odoo>
